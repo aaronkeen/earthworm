@@ -30,18 +30,21 @@ Earthworm parses a given Python script and generates an *Abstract Syntax Tree (A
 
 ![alt_text](https://i.imgur.com/Fc5KU3S.png)
 
-**Figure 1:** AST for (x - 1) + 4
-
+**Figure 2:** AST for (x - 1) + 4
 
 The AST is then used to generate a *Control Flow Graph (CFG)* for each individual function, a graph representation of all paths that might be taken throughout that function's execution. Each individual block of a CFG represents some portion of control flow in the function. For example, a Conditional (IF statement) may have a block for the **guard**, a block for the **then** portion, and a block for the **else** portion.
 
 ![alt_text](https://i.imgur.com/gtgSjKk.png)
 
-**Figure 2:** CFG for IF Statement
+**Figure 3:** CFG for IF Statement
 
-Within each of the individual branches of the if CFG, there may be other nested, intermediate CFGs. Earthworm attempts to analyze these sub-CFGs and determine if the code within can be isolated. Earthworm saves the line numbers corresponding to the newly generated **suggestion**, as well as the variables that need to be passed in and returned in order to maintain the states of the remainder of the CFG (and thereby avoid altering the program's output).
+Within each of the individual branches of the CFG, there may be other nested, intermediate CFGs. Earthworm attempts to analyze these sub-CFGs and determine if the code within can be isolated. Earthworm saves the line numbers corresponding to the newly generated **suggestion**, as well as the variables that need to be passed in and returned in order to maintain the states of the remainder of the CFG (and thereby avoid altering the program's output).
 
-When **Analyzing** a file in the Earthworm GUI, boxes are drawn around
+When **Analyzing** a file in the Earthworm GUI, boxes are drawn around the source code corresponding to the line numbers returned by the command-line tool:
 
 ![alt_text](https://i.imgur.com/xOdjvNp.png)
-|If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope.
+
+**Figure 4:** Highlighted suggestions
+
+
+If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope.
