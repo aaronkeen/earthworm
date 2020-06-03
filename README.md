@@ -40,11 +40,18 @@ The AST is then used to generate a *Control Flow Graph (CFG)* for each individua
 
 Within each of the individual branches of the CFG, there may be other nested, intermediate CFGs. Earthworm attempts to analyze these sub-CFGs and determine if the code within can be isolated. Earthworm saves the line numbers corresponding to the newly generated **suggestion**, as well as the variables that need to be passed in and returned in order to maintain the states of the remainder of the CFG (and thereby avoid altering the program's output).
 
-When **Analyzing** a file in the Earthworm GUI, boxes are drawn around the source code corresponding to the line numbers returned by the command-line tool:
+### Code Analysis
+When **Analyzing** a file in the Earthworm GUI, the command-line tool is invoked and the above steps are performed to produce a list of **suggestions**.
+
+![alt_text](https://i.imgur.com/3rWBiJY.png)
+
+**Figure 4:** Analysis results 
+
+Afterward, boxes are drawn around the source code fragments corresponding to the line numbers within the suggestions returned by the command-line tool:
 
 ![alt_text](https://i.imgur.com/xOdjvNp.png)
 
-**Figure 4:** Highlighted suggestions
+**Figure 5:** Highlighted suggestions
 
 
 If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope.
