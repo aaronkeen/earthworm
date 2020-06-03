@@ -25,6 +25,9 @@ Earthworm provides the following features:
 5. The ability to allow Earthworm to fix a given suggestion, with user direction
 ```
 
+## Download
+TBD
+
 ## How does it work?
 Earthworm parses a given Python script and generates an *Abstract Syntax Tree (AST)*, a tree-structured representation of the syntactic structure of the input source code.
 
@@ -53,5 +56,20 @@ Afterward, boxes are drawn around the source code fragments corresponding to the
 
 **Figure 5:** Highlighted suggestions
 
+By clicking the **?** buttons at the top-left corner of each suggestion, that suggestion can be *expanded* to view additional information:
 
-If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope.
+![alt_text](https://i.imgur.com/Myz483b.png)
+**Figure 6:** Expanded suggestion info
+
+From here, the user has the option to allow Earthworm to **Fix** the suggestion:
+
+![alt_text](https://i.imgur.com/Yoef3xv.png)
+**Figure 7:** Fix Suggestion Dialog
+
+If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope, as seen above. The tool suggests the code to be written, however this can be changed by the user at any time.
+
+After accepting the changes, the segmented code is moved to the top of the program and the original suggestion code is replaced with a function invocation pointing to the new code.
+
+![alt_text](https://i.imgur.com/qEe7vIt.png)
+![alt_text](https://i.imgur.com/LThrH0J.png)
+**Figure 8:** Fixed suggestion code and new function invocation
