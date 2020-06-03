@@ -7,8 +7,10 @@ In general, this sort of formatting helps make programs easier to debug and orga
 The initial version of Earthworm was a command-line tool proposed, researched, implemented, and presented by Nupur Garg, a graduate student at California Polytechnic State University, San Luis Obispo.
 
 You can find copies of both her Thesis and code repositories below:
+```
 https://digitalcommons.calpoly.edu/theses/1759/
 https://github.com/gargn/thesis
+```
 
 This program, written in Python, attempts to rationalize Garg's work into a fully-implemented User Interface, ultimately designed to make Earthworm both easier to use and more understandable.
 It was designed by me (Nathan P. Ybanez) as a Senior Project for my undergraduate degree in Computer Science from Cal Poly SLO.
