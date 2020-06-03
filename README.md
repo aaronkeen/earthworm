@@ -26,6 +26,9 @@ Earthworm provides the following features:
 ```
 
 ## Download
+### Windows
+TBD
+### Linux/Unix
 TBD
 
 ## How does it work?
@@ -74,4 +77,5 @@ After accepting the changes, the segmented code is moved to the top of the progr
 
 ![alt_text](https://i.imgur.com/qEe7vIt.png)
 ![alt_text](https://i.imgur.com/LThrH0J.png)
+
 **Figure 8:** Fixed suggestion code and new function invocation
