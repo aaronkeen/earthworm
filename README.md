@@ -1,5 +1,5 @@
 # Earthworm
-Earthworm is a utility designed to analyze syntactically-valid Python scripts and offer suggestions for improving the program's functional decomposition. Earthworm identifies code fragments that serve a separate (algorithmic) purpose from their enclosing function(s), and attempts to create an entirely new function from them. The end result is a Python script where each function does exactly one task.
+Earthworm is a utility designed to analyze syntactically-valid Python scripts and offer suggestions for improving the program's **functional decomposition**. Earthworm identifies code fragments that serve a separate (algorithmic) purpose from their enclosing function(s), and attempts to create **an entirely new function** from them. The end result is a Python script where each function does exactly one task.
 
 In general, this sort of formatting helps make programs easier to debug and organize, since each task is segmented in its own function. It also reduces the likelihood of unintended side-effects occurring when modifying parts of a program. This makes Earthworm especially useful for software development teams and also as a learning tool for students and professors.
 
