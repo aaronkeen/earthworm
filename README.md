@@ -56,14 +56,16 @@ Afterward, boxes are drawn around the source code fragments corresponding to the
 
 **Figure 5:** Highlighted suggestions
 
-By clicking the **?** buttons at the top-left corner of each suggestion, that suggestion can be *expanded* to view additional information:
+By clicking the **?** buttons at the top-left corner of each suggestion, that suggestion can be *expanded* to view additional information, including the code fragment itself, along with the reasons for the suggestion:
 
 ![alt_text](https://i.imgur.com/Myz483b.png)
+
 **Figure 6:** Expanded suggestion info
 
 From here, the user has the option to allow Earthworm to **Fix** the suggestion:
 
 ![alt_text](https://i.imgur.com/Yoef3xv.png)
+
 **Figure 7:** Fix Suggestion Dialog
 
 If executing the code within a given block would have side effects on the other blocks (for example in the case of a variable which is shared between both blocks), then Earthworm will create an intermediate value and return it back to the calling scope, as seen above. The tool suggests the code to be written, however this can be changed by the user at any time.
