@@ -26,6 +26,10 @@ Earthworm provides the following features:
 ## How does it work?
 Earthworm parses a given Python script and generates an *Abstract Syntax Tree (AST)*, a tree-structured representation of the syntactic structure of the input source code.
 
+![alt_text](https://i.imgur.com/VON8SDg.png)
+**Figure 1:** AST for (x - 1) + 4
+
 The AST is then used to generate a *Control Flow Graph (CFG)* for each individual function, a graph representation of all paths that might be taken throughout that function's execution. Each individual block of a CFG represents some portion of control flow in the function. For example, a Conditional (IF statement) may have a block for the 
 
 ![alt_text](https://i.imgur.com/EGOuRID.png)
+**Figure 2:** CFG for IF Statement
