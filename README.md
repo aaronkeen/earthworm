@@ -28,4 +28,4 @@ Earthworm parses a given Python script and generates an *Abstract Syntax Tree (A
 
 The AST is then used to generate a *Control Flow Graph (CFG)* for each individual function, a graph representation of all paths that might be taken throughout that function's execution. Each individual block of a CFG represents some portion of control flow in the function. For example, a Conditional (IF statement) may have a block for the 
 
-!(https://media.geeksforgeeks.org/wp-content/uploads/20190515152555/555.jpg)
+![alt_text](https://media.geeksforgeeks.org/wp-content/uploads/20190515152555/555.jpg)
