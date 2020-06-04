@@ -389,26 +389,23 @@ class Ui_FileViewer(object):
         ins_index = -1
         for i in range(len(self.lines)):
             spl = self.lines[i][1].split()
-            if len(spl) == 0:
+            if len(spl) == 0: # Blank line
                 continue
 
-            # Function or class definition
+            # Find first function or class definition
             if spl[0] in ['class', 'def']:
                 ins_index = i
                 break
 
+        # Get code before and after the new code
+        before = self.lines[:ins_index]
+        after = self.lines[ins_index:]
+
         # Now insert the new code
-        ins_before = self.lines[:ins_index]
-        ins_after = self.lines[ins_index:]
-
-        ins = []
-        ins.append(('1', '\n')) # Mandatory blank line before
-        func_lines = func_text.split('\n')
-        for line in func_lines:
-            ins.append(('1', line+'\n'))
-        ins.append(('1', '\n')) # Mandatory blank line after
-
-        self.lines = ins_before + ins + ins_after
+        new_code = [('1', '{}\n'.format(line)) for line in func_text.split('\n')]
+        new_code.insert(0, ('1', '\n')) # Mandatory blank line before code
+        new_code.append(('1', '\n')) # Mandatory blank line after code
+        self.lines = before + new_code + after
 
         # Renumber the lines because code was removed/added
         self.update_linenos()
@@ -422,8 +419,9 @@ class Ui_FileViewer(object):
             for s in self.suggestions:
                 # Is this suggestion nested/overlapping with the original one we removed?
                 # Overlapping if either the start or end point are between the fixed suggestion
+                nested = st >= s.start and end <= s.end
                 overlapping = (s.start >= st and s.start <= end) or (s.end >= st and s.end <= end)
-                if overlapping:
+                if nested or overlapping:
                     found = True
                     self.remove_suggestion(s.index) # Remove the suggestion and its box
                     break
@@ -432,14 +430,13 @@ class Ui_FileViewer(object):
                 break
 
         # Shift all remaining suggestion line numbers
-        new_code_length = len(ins) # How many new lines were inserted
         for s in self.suggestions:
             # Figure out how much to shift by
             if s.start > end: # Suggestion is BELOW, code shifts up (from prev removal) also
                 self.suggestions[s.index].shift_lines(direction='up', count=(end - st))
 
             # Update text labels
-            self.suggestions[s.index].shift_lines(direction='down', count=new_code_length)
+            self.suggestions[s.index].shift_lines(direction='down', count=len(new_code))
             self.suggestion_infos[s.index].ui.clear_labels()
             self.suggestion_infos[s.index].ui.populate_labels()
 
