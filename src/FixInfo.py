@@ -37,7 +37,8 @@ class Ui_FixInfo(object):
         dec_amt = first_indent - 4 if first_indent > 4 else 0 # Number of spaces to decrement each line by
         
         # Setup text box
-        text = 'def FUNCTION_NAME({}):\n'.format(str(self.suggestion.params)[1:-1].replace('\'', ''))
+        params_str = str(self.suggestion.params)[1:-1].replace('\'', '')
+        text = 'def FUNCTION_NAME({}):\n'.format(params_str)
         for l in text_lines:
             line_leading_sp = len(l) - len(l.lstrip())
             if l.isspace():
@@ -49,17 +50,26 @@ class Ui_FixInfo(object):
 
         # Add return statement (if one exists)
         if self.suggestion.returns is not None:
-            if isinstance(self.suggestion.returns, list):
-                text += '    return {}\n'.format(str(self.suggestion.returns)[1:-1].replace('\'', ''))
-            else:
-                text += '    return {}\n'.format(self.suggestion.returns)
+            if not isinstance(self.suggestion.returns, list):
+                self.suggestion.returns = [self.suggestion.returns]
+
+            ret_str = str(self.suggestion.returns)[1:-1].replace('\'', '')
+            text += '    return {}\n'.format(ret_str)
         
         self.textBox_function.setText(text)
 
     # Fills out the invocation textbox with the suggested text
     def populate_invocation(self):        
         # Setup text box
-        text = 'FUNCTION_NAME({})'.format(str(self.suggestion.params)[1:-1].replace('\'', ''))
+        params_str = str(self.suggestion.params)[1:-1].replace('\'', '')
+        if self.suggestion.returns is not None:
+            if not isinstance(self.suggestion.returns, list):
+                self.suggestion.returns = [self.suggestion.returns]
+            ret_str = str(self.suggestion.returns)[1:-1].replace('\'', '')
+            text = '{} = FUNCTION_NAME({})'.format(ret_str, params_str)
+        else: # No return
+            text = 'FUNCTION_NAME({})'.format(params_str)
+
         self.textBox_invocation.setText(text)
 
     # Called when the user hits OK
