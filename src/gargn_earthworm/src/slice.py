@@ -4,7 +4,6 @@
 # Python Version: 3.5
 
 
-from .globals import *
 from numpy import array, diff, where, split
 from enum import Enum
 import copy

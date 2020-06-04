@@ -257,11 +257,11 @@ class Ui_FileViewer(object):
         self.populate_lines(self.lines, prefix_spaces=5)
 
         # Create buttons
-        self.add_button(text='Open File', icon_path='../src/img/icon_open.png', target=self.open_file, tooltip_text='Open a file to analyze')
-        self.add_button(text='Analyze', icon_path='../src/img/icon_analyze.png', target=self.analyze, tooltip_text='Analyze the file and identify code fragments to separate')
-        #self.add_button(text='Select All', icon_path='../src/img/icon_selectall.png', target=None)
-        #self.add_button(text='Fix Selected', icon_path='../src/img/icon_fix.png', target=None)
-        self.add_button(text='Save As', icon_path='../src/img/icon_saveas.png', target=self.save_file, tooltip_text='Save the currently opened file')
+        self.add_button(text='Open File', icon_path='img/icon_open.png', target=self.open_file, tooltip_text='Open a file to analyze')
+        self.add_button(text='Analyze', icon_path='img/icon_analyze.png', target=self.analyze, tooltip_text='Analyze the file and identify code fragments to separate')
+        #self.add_button(text='Select All', icon_path='img/icon_selectall.png', target=None)
+        #self.add_button(text='Fix Selected', icon_path='img/icon_fix.png', target=None)
+        self.add_button(text='Save As', icon_path='img/icon_saveas.png', target=self.save_file, tooltip_text='Save the currently opened file')
 
         # Setup tooltips
         QtWidgets.QToolTip.setFont(QtGui.QFont('Consolas', 10))
