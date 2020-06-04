@@ -3,10 +3,6 @@ TODO:
 1. Make it so the resolutions of all windows are a percent of the screen
 2. Make it so the pop-up dialogs center on the screen
 3. Add extra spaces to the end of labels after Analyze so that the scrollbar can reach and show the entire highlighted area
-
-IMPORTANT:
-4. Figure out why fixing the really large suggestion in minesweeper.py is giving index out of bounds error
-5. Figure out why some nested suggestions aren't being deleted
 '''
 
 '''
@@ -425,7 +421,9 @@ class Ui_FileViewer(object):
             found = False
             for s in self.suggestions:
                 # Is this suggestion nested/overlapping with the original one we removed?
-                if st >= s.start and st <= s.end:
+                # Overlapping if either the start or end point are between the fixed suggestion
+                overlapping = (s.start >= st and s.start <= end) or (s.end >= st and s.end <= end)
+                if overlapping:
                     found = True
                     self.remove_suggestion(s.index) # Remove the suggestion and its box
                     break
