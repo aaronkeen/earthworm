@@ -27,7 +27,7 @@ Earthworm provides the following features:
 
 ## Download
 ### Windows
-![Mirror](Google Drive: 67 MB .7z)
+![Google Drive: 67 MB .7z](https://drive.google.com/file/d/1-Sowhomu066aeXaIjwFkEniT-QsLUwGR/view?usp=sharing)
 ### Linux/Unix
 TBD
 
