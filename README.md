@@ -25,7 +25,7 @@ Earthworm provides the following features:
 5. The ability to allow Earthworm to fix a given suggestion, with user direction
 ```
 
-## Download
+## Binaries
 ### Windows
 [Google Drive: 67 MB .7z](https://drive.google.com/file/d/1-Sowhomu066aeXaIjwFkEniT-QsLUwGR/view?usp=sharing)
 ### Linux/Unix
